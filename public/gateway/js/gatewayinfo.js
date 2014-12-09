@@ -110,7 +110,7 @@ function loadoffers(callback){
 		        receiveOffers("asks", res.offers, "manual");
 				finish++;if(finish>1) {if(callback) callback();}
 		}else{
-			console.log("订单查询失败");
+			console.log("Offer query failed");//订单查询失败");
 	   }
 	});
 	//remote.request('book_offers', {taker_gets: {'currency':'CNY','issuer': 'razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA'},
@@ -122,7 +122,7 @@ function loadoffers(callback){
         	receiveOffers("bids",res.offers, "manual");
 			finish++;if(finish>1) {if(callback) callback();}
       }else{
-         console.log("订单查询失败");
+         console.log("Offer query failed");//订单查询失败");
       }
     });
 }
@@ -200,20 +200,20 @@ function offerListener(action, offer, op)
    var account;
    var color;
    var actionforshow,offerinfo;
-   var opinfo="取消";
-   if(op=="added") opinfo="增加";
+   var opinfo="cancel";
+   if(op=="added") opinfo="add";
    account = offer.Account;
    takerGets=offer.TakerGets;
    takerPays=offer.TakerPays;
    if(action == "asks"){
        takerGets.value ? goodssize = takerGets.value : goodssize = takerGets/1000000;	
        takerPays.value ? moneysize = takerPays.value : moneysize = takerPays/1000000;
-	   actionforshow="卖单";
+	   actionforshow="sale order";
 	   color="red";
    }else{
        takerPays.value ? goodssize = takerPays.value : goodssize = takerPays/1000000;	
        takerGets.value ? moneysize = takerGets.value : moneysize = takerGets/1000000;
-	   actionforshow="买单";
+	   actionforshow="buy order";
 	   color="green";
    }
    price = moneysize/goodssize;
@@ -245,14 +245,14 @@ function tradeListener(action, tradePays, tradeGets)
          moneysize = tradePays.to_human()+money.currency;
          issuerAddress = tradePays._issuer.to_json();
 		 color="green";
-		 actionforshow="买";//卖单成交，提示买
+		 actionforshow="buy";//卖单成交，提示买
       }else{
          price = tradeGets.ratio_human(tradePays).to_human();
          goodssize = tradePays.to_human()+goods.currency;
          moneysize = tradeGets.to_human()+money.currency;
          issuerAddress = tradeGets._issuer.to_json();
 		 color="red";
-		 actionforshow="卖";
+		 actionforshow="sale";
       }
       tradeinfo=actionforshow+" price:"+price.substring(0,6)+"  "+goodssize+"  "+moneysize;
       var tradeinfoobj = 

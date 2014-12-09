@@ -1,4 +1,5 @@
 .hidden {display: none;}
+.row a{color:black}
 /*currency css begin */
 .currency {font-family: "Lucida Console", Monaco, Monospace; font-size: 15px; color:#FFFFFF; padding: 1px 3px 1px; border-radius: 3px;}
 .XRP {color:#000080;background-color:#98FB98} .XRP:after{content:"XRP"}
@@ -51,7 +52,7 @@
   }
 }
 
-.loader {
+.loading {
 	width:24px;height:24px;
   -webkit-animation: rotating 1s linear infinite;
      -moz-animation: rotating 1s linear infinite;

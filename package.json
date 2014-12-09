@@ -1,19 +1,20 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "rippleOK",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "Search ripple ledger chain data,display payment and trade info.",
   "keywords": [
+    "Ripple",
     "OpenShift",
     "Node.js",
     "application",
     "openshift"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "lieefu",
+    "email": "lieefu@gmail.com",
+    "url": "http://www.rippleok.com/"
   },
-  "homepage": "http://www.openshift.com/",
+  "homepage": "http://www.rippleok.com/",
   "repository": {
     "type": "git",
     "url": "https://github.com/openshift/origin-server"

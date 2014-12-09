@@ -37,17 +37,17 @@
 </head>
 <body> 
 <!--------------------------------------------------------------------->
-	<div class="container"  ng-controller="GatewayCtrl">
+	<div class="container"  ng-controller="GatewayCtrl" ng-cloak>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-2">Gateway Name：{{gateway.name}}</div>
-					<div class="col-md-5">Ripple Address：<a type='text' href="../account/account.html#{{gateway.address}}" target="_blank">{{gateway.address}}</a></div>
+					<div class="col-md-2">Name：{{gateway.name}}</div>
+					<div class="col-md-5">Address：<a type='text' href="../account/account.html#{{gateway.address}}" target="_blank">{{gateway.address}}</a></div>
 					<div class="col-md-5">Web address：<a href='{{gateway.weburl}}' target='_blank'>{{gateway.weburl}}</a></div>
 				</div>
 			</div>
 		</div>
-<!--------------------------------------------------------------->
+<!-------------------------------------------------------------------->
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-info">
@@ -131,7 +131,7 @@
 			</div>
 		</div>
 	</div>
-<!--------------------------------------------------------------->
+<!---------------------------------------------------------------->
 
 
 		<div class="row">

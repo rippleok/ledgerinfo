@@ -23,7 +23,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  <style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style>
 	<style>
 		.popover { max-width: 600px; width: auto;}
 	</style> 
@@ -42,18 +41,15 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-          <li><a href="#">Account</a></li>
-          <li><a href="#">Gateways</a></li>
-          <li><a href="#">Ledger</a></li>
-          <li><a href="#">Transaction</a></li>
-          <li><a href="#">Server</a></li>         
+          <li><a href="./account/account.html" target="_blank">Account</a></li>
+          <li><a href="./gateway/gateway.html#CNY.razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA" target="_blank">Gateway</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
         	<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Language <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">English</a></li>
-                <li><a href="#">中文</a></li>
+                <li><a href="#">中文(施工中)</a></li>
               </ul>
             </li>
         </ul>
@@ -87,48 +83,48 @@
 			</div>
  			<div class="row">
 				<div class="col-md-3">United States Dollar<span class="currency USD"></span></div>
-				<div class="col-md-3"><span id="usdsnapswap" data-toggle="popover" data-placement="bottom" data-content="">loading</span>$ <a href="./gateway/gateway.html#USD.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">SnapSwap</a> <a href="https://snapswap.us/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="usdbitstamp" data-toggle="popover" data-placement="bottom" data-content="">loading</span>$ <a href="./gateway/gateway.html#USD.rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"  target="_blank">Bitstamp</a> <a href="http://www.bitstamp.net/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="usdsnapswap" data-toggle="popover" data-placement="bottom" data-content=""></span>$ <a href="./gateway/gateway.html#USD.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">SnapSwap</a> <a href="https://snapswap.us/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="usdbitstamp" data-toggle="popover" data-placement="bottom" data-content=""></span>$ <a href="./gateway/gateway.html#USD.rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"  target="_blank">Bitstamp</a> <a href="http://www.bitstamp.net/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 				<div class="col-md-3"></div>
 		  </div>
 		  <div class="row">
 				<div class="col-md-3">China Yuan <span class="currency CNY"></span></div>
-					<div class="col-md-3"><span id="cnyripplechina" data-toggle="popover" data-placement="bottom" data-content="">loading</span>¥ <a href="./gateway/gateway.html#CNY.razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"  target="_blank">rippleChina</a> <a href="https://trade.ripplechina.net/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-					<div class="col-md-3"><span id="cnyripplecn" data-toggle="popover" data-placement="bottom" data-content="">loading</span>¥ <a href="./gateway/gateway.html#CNY.rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"  target="_blank">rippleCn</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-					<div class="col-md-3"><span id="cnyripplefox" data-toggle="popover" data-placement="left" data-content="">loading</span>¥ <a href="./gateway/gateway.html#CNY.rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"  target="_blank">rippleFox</a> <a href="https://ripplefox.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+					<div class="col-md-3"><span id="cnyripplechina" data-toggle="popover" data-placement="bottom" data-content=""></span>¥ <a href="./gateway/gateway.html#CNY.razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"  target="_blank">rippleChina</a> <a href="https://trade.ripplechina.net/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+					<div class="col-md-3"><span id="cnyripplecn" data-toggle="popover" data-placement="bottom" data-content=""></span>¥ <a href="./gateway/gateway.html#CNY.rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"  target="_blank">rippleCn</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+					<div class="col-md-3"><span id="cnyripplefox" data-toggle="popover" data-placement="left" data-content=""></span>¥ <a href="./gateway/gateway.html#CNY.rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"  target="_blank">rippleFox</a> <a href="https://ripplefox.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 		  </div>
 		 
 			<div class="row">
 				<div class="col-md-3">Euro Member Countries<span class="currency EUR"></span></div>
-				<div class="col-md-3"><span id="eursnapswap" data-toggle="popover" data-placement="bottom" data-content="">loading</span>€ <a href="./gateway/gateway.html#EUR.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">SnapSwap</a> <a href="https://snapswap.eu/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="eurtherock" data-toggle="popover" data-placement="bottom" data-content="">loading</span>€ <a href="./gateway/gateway.html#EUR.rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"  target="_blank">therock</a> <a href="https://www.therocktrading.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="eursnapswap" data-toggle="popover" data-placement="bottom" data-content=""></span>€ <a href="./gateway/gateway.html#EUR.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">SnapSwap</a> <a href="https://snapswap.eu/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="eurtherock" data-toggle="popover" data-placement="bottom" data-content=""></span>€ <a href="./gateway/gateway.html#EUR.rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"  target="_blank">therock</a> <a href="https://www.therocktrading.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 				<div class="col-md-3"></div>
 		  </div>
 			<div class="row">
 				<div class="col-md-3">Japan Yen<span class="currency JPY"></span></div>
-				<div class="col-md-3"><span id="jpyrippletradejapan" data-toggle="popover" data-placement="top" data-content="">loading</span>¥ <a href="./gateway/gateway.html#JPY.rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"  target="_blank">RippleTradeJapan</a> <a href="http://rippletrade.jp/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="jpytokyojpy" data-toggle="popover" data-placement="top" data-content="">loading</span>¥ <a href="./gateway/gateway.html#JPY.r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"  target="_blank">tokyojpy</a> <a href="http://tokyojpy.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="jpyrippletradejapan" data-toggle="popover" data-placement="top" data-content=""></span>¥ <a href="./gateway/gateway.html#JPY.rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"  target="_blank">RippleTradeJapan</a> <a href="http://rippletrade.jp/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="jpytokyojpy" data-toggle="popover" data-placement="top" data-content=""></span>¥ <a href="./gateway/gateway.html#JPY.r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"  target="_blank">tokyojpy</a> <a href="http://tokyojpy.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 				<div class="col-md-3"></div>
 		  </div>
 			<div class="row">
 				<div class="col-md-3">Canada Dollar<span class="currency CAD"></span></div>
-				<div class="col-md-3"><span id="cadrippleunion" data-toggle="popover" data-placement="top" data-content="">loading</span>$ <a href="./gateway/gateway.html#CAD.r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S"  target="_blank">RippleUnion</a> <a href="https://rippleunion.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="cadrippleunion" data-toggle="popover" data-placement="top" data-content=""></span>$ <a href="./gateway/gateway.html#CAD.r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S"  target="_blank">RippleUnion</a> <a href="https://rippleunion.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 				<div class="col-md-3"></div><div class="col-md-3"></div>
 		  </div>
 			<div class="row">
 				<div class="col-md-3">Bitcoin<span class="currency BTC"></span></div>
-				<div class="col-md-3"><span id="btcbitstamp" data-toggle="popover" data-placement="top" data-content="">loading</span>Ƀ <a href="./gateway/gateway.html#BTC.rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"  target="_blank">Bitstamp</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="btcbtc2ripple" data-toggle="popover" data-placement="top" data-content="">loading</span>Ƀ <a href="./gateway/gateway.html#BTC.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">btc2ripple</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="btcbitstamp" data-toggle="popover" data-placement="top" data-content=""></span>Ƀ <a href="./gateway/gateway.html#BTC.rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"  target="_blank">Bitstamp</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="btcbtc2ripple" data-toggle="popover" data-placement="top" data-content=""></span>Ƀ <a href="./gateway/gateway.html#BTC.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">btc2ripple</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 				<div class="col-md-3"></div>
 		  </div>
 			<div class="row">
 				<div class="col-md-3">Singapore Dollar<span class="currency SGD"></span></div>
-				<div class="col-md-3"><span id="sgdripplesingapore" data-toggle="popover" data-placement="bottom" data-content="">loading</span>$ <a href="./gateway/gateway.html#SGD.r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"  target="_blank">RippleSingapore</a> <a href="https://www.ripplesingapore.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="sgdripplesingapore" data-toggle="popover" data-placement="bottom" data-content=""></span>$ <a href="./gateway/gateway.html#SGD.r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"  target="_blank">RippleSingapore</a> <a href="https://www.ripplesingapore.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 				<div class="col-md-3"></div><div class="col-md-3"></div>
 		  </div>
 			<!--div class="row">
 				<div class="col-md-3">Gold Bullion International<span class="currency GBI"></span></div>
-				<div class="col-md-3"><span id="gbigbi" data-toggle="popover" data-placement="top" data-content="">loading</span> GBI <a href="http://www.bullioninternational.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
+				<div class="col-md-3"><span id="gbigbi" data-toggle="popover" data-placement="top" data-content=""></span> GBI <a href="http://www.bullioninternational.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
 				<div class="col-md-3"></div><div class="col-md-3"></div>
 		  </div-->
 		</div><!-- /container -->

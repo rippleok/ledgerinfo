@@ -1,4 +1,13 @@
 .hidden {display: none;}
+@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+
+.row a{color:black}
 /*currency css begin */
 .currency {font-family: "Lucida Console", Monaco, Monospace; font-size: 15px; color:#FFFFFF; padding: 1px 3px 1px; border-radius: 3px;}
 .XRP {color:#000080;background-color:#98FB98} .XRP:after{content:"XRP"}
