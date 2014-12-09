@@ -100,14 +100,16 @@ function bookresubscribe(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function loadoffers(callback){
 	//console.log("下载挂单数据...............");
+	$("#txLoading").show();
 	bookresubscribe();
 	var finish=0;
 	//remote.request('book_offers',{taker_gets: {'currency':'XRP'},
 	//							  taker_pays: {'currency':'CNY','issuer': 'razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA'}})
 	remote.request('book_offers',{taker_gets: goods, taker_pays: money})
 		.request(function(err, res){
+			$("#txLoading").hide();
 			if(!err){
-		        receiveOffers("asks", res.offers, "manual");
+		    receiveOffers("asks", res.offers, "manual");
 				finish++;if(finish>1) {if(callback) callback();}
 		}else{
 			console.log("Offer query failed");//订单查询失败");

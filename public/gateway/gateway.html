@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ripple gateway infomation</title>
   <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/rippleok.css" rel="stylesheet">
+	<script src="../js/ripple-gateways.js"></script>
   <script src="../js/ripple-0.9.3.js"></script>
 	<script src="../js/ripple-remote.js"></script>
-  <script src="js/gatewayinfo.js"></script>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="../js/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -154,6 +156,10 @@
 
 	   				</div>
 	   				<div class="panel-body" style="max-height: 200px;overflow-y: auto;">
+							<div id="txLoading" class="bold" style="display:none">
+									<img src="../img/ripplelogo.png" class="loading">Loading gateway data...
+							</div>
+
 						<div class="row" ng-repeat="log in loglist track by $index|limitTo:300">
 							<div class="col-md-12"><span>{{log.datetime}}</span><span style="color:{{log.color}};padding-left:20px;">{{log.info}}</span></div>
 						</div>
@@ -167,10 +173,10 @@
 	
 	<script src="../js/angular.js"></script>
 	<script src="../js/angular-route.js"></script>
-		<script src="../js/ripple-gateways.js"></script>
-		<script src="../js/rippleok-util.js"></script>
+	<script src="../js/rippleok-util.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
+  <script src="js/gatewayinfo.js"></script>
 <script>
 $('#loadoffersbtn').click(function (){
 	var $btn=$(this).button('loading');
