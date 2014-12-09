@@ -1,3 +1,2 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
-
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
+Ripple Pay Protocol Portal
+Search ledger chain data,display ripple protocol pay and trade info.
