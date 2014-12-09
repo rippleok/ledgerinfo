@@ -1,0 +1,16 @@
+.hidden {display: none;}
+.currency {font-family: "Lucida Console", Monaco, Monospace; font-size: 15px; color:#FFFFFF; padding: 1px 3px 1px; border-radius: 3px;}
+.XRP {color:#000080;background-color:#98FB98} .XRP:after{content:"XRP"}
+.CNY {background-color:#B22222} .CNY:after{content:"CNY"} 
+.USD {background-color:#4169E1} .USD:after{content:"USD"}
+.JPY {background-color:#483D8B} .JPY:after{content:"JPY"}
+.BTC {background-color:#B8860B} .BTC:after{content:"BTC"}
+.CAD {background-color:#CD5C5C} .CAD:after{content:"CAD"}
+.EUR {background-color:#20B2AA} .EUR:after{content:"EUR"}
+.SGD {background-color:#064008} .SGD:after{content:"SGD"}
+.GBI {background-color:#DAA520} .GBI:after{content:"GBI"}
+.GBP {background-color:#DAA520} .GBP:after{content:"GBP"}
+.CHF {background-color:#DAA520} .CHF:after{content:"CHF"}
+.AUD {background-color:#DAA520} .AUD:after{content:"AUD"}
+.LTC {background-color:#DAA520} .LTC:after{content:"LTC"}
+
