@@ -142,7 +142,7 @@ function rippleName(address){
 									}
 				});	
 }
-const AccountRootFlags = {
+var AccountRootFlags = {
   PasswordSpent:   { name:  'password_spent', value: 0x00010000 },
   RequireDestTag:  { name:  'require_destination_tag', value: 0x00020000 },
   RequireAuth:     { name:  'require_authorization', value: 0x00040000 },
