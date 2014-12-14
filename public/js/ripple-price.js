@@ -46,7 +46,8 @@ var Markets =
         gateways: 
         [
            {name: 'RippleTradeJapan', address: 'rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6',priceid:'#jpyrippletradejapan'},
-					 {name: 'tokyojpy', address: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN',priceid:'#jpytokyojpy'}
+					 {name: 'tokyojpy', address: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN',priceid:'#jpytokyojpy'},
+					 {name: 'RippleExchangeTokyo', address: 'r9ZFPSb1TFdnJwbTMYHvVwFK1bQPUCVNfJ',priceid:'#RippleExchangeTokyo'}
         ]                
      },
 		 {
@@ -67,6 +68,15 @@ var Markets =
         ]                
      },
 		 {
+        name: 'Korea won',
+        currency: 'KRW',
+        gateways: 
+        [
+           {name: 'PaxMonetar', address: 'rUkMKjQitpgAM5WTGk79xpjT38DEJY283d',priceid:'#paxMoneta'}
+        ]                
+     }
+/*
+		 {
         name: 'Gold Bullion International',
         currency: '0158415500000000C1F76FF6ECB0BAC600000000',
         gateways: 
@@ -74,6 +84,7 @@ var Markets =
            {name: 'GBI', address: 'rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67',priceid:'#gbigbi'}
         ]                
      }
+*/
 ];   
 
 function subscribe(){

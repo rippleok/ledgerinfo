@@ -1,4 +1,5 @@
 //https://support.ripplelabs.com/hc/en-us/articles/202847686-Gateway-Information
+//https://ripple.com/knowledge_center/gateway-information/
 var Gateways={
 	razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA:{
 		name:'Ripple China',
@@ -62,7 +63,7 @@ var Gateways={
 		currencies:'JPY',
 		weburl:'http://rippletrade.jp/',
 		hotaddress:[],
-	}
+	},
 	rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67:{
 		name:'TGold Bullion International',
 		ripplename:'~GBI',

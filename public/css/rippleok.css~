@@ -1,5 +1,16 @@
 .hidden {display: none;}
-.row a{color:black}
+@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+footer{color:gray}
+footer a {
+color: #888888;
+}
+a{color:black}
 /*currency css begin */
 .currency {font-family: "Lucida Console", Monaco, Monospace; font-size: 15px; color:#FFFFFF; padding: 1px 3px 1px; border-radius: 3px;}
 .XRP {color:#000080;background-color:#98FB98} .XRP:after{content:"XRP"}
@@ -15,6 +26,7 @@
 .CHF {background-color:#DAA520} .CHF:after{content:"CHF"}
 .AUD {background-color:#DAA520} .AUD:after{content:"AUD"}
 .LTC {background-color:#DAA520} .LTC:after{content:"LTC"}
+.KRW {background-color:#DAA520} .KRW:after{content:"KRW"}
 /*currency css end */
 
 /* animation for png loader */

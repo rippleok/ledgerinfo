@@ -1,4 +1,5 @@
 //https://support.ripplelabs.com/hc/en-us/articles/202847686-Gateway-Information
+//https://ripple.com/knowledge_center/gateway-information/
 var Gateways={
 	razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA:{
 		name:'Ripple China',
@@ -131,6 +132,13 @@ var Gateways={
 		ripplename:'~RippleMarketJapan',
 		currencies:'BTC, USD, NZD, AUD',
 		weburl:'http://ripple-market.jp',
+		hotaddress:[],
+	},
+	rUkMKjQitpgAM5WTGk79xpjT38DEJY283d:{
+		name:'PaxMoneta',
+		ripplename:'~PaxMoneta',
+		currencies:'KRW',
+		weburl:'https://www.paxmoneta.com/',
 		hotaddress:[],
 	}
 //////////////////////////////////////////////
