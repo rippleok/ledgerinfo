@@ -1,3 +1,4 @@
 wp
 *~
 node_modules/
+.openshift/
