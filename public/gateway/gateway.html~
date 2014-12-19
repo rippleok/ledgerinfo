@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ripple gateway infomation</title>
   <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/rippleok.css" rel="stylesheet">
 	<script src="../js/ripple-gateways.js"></script>
   <script src="../js/ripple-0.9.3.js"></script>
 	<script src="../js/ripple-remote.js"></script>

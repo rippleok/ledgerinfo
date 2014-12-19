@@ -62,11 +62,6 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-          <li><a href="#">Account</a></li>
-          <li><a href="#">Gateways</a></li>
-          <li><a href="#">Ledger</a></li>
-          <li><a href="#">Transaction</a></li>
-          <li><a href="#">Server</a></li>         
         </ul>
 				<form class="nav navbar-nav navbar-right navbar-form">
 						<div class="input-group" style="width:500px">					
@@ -81,7 +76,7 @@
 		</div><!-- /container -->
 	</nav><!--/nav -->
 
-	<div class="container" ng-controller="AccountCtrl">
+	<div class="container" ng-controller="AccountCtrl" ng-cloak>
 <!--------------------------------------------------------------------->
 		<div class="row">
 			<div class="col-md-8">
@@ -202,11 +197,7 @@
 							<h3 class="panel-title" style="margin-top:3px">Transactions History</h3>
 						</div>							
 						<div class="col-md-6" style="text-align:right">
-							<span class="panel-title" class="inline" style="margin-top:3px">显示增加取消挂单信息</span> 
-							<div id="onoffofferlog" class="btn-group btn-toggle" ng-click="onoffOfferLog()">									
-								<button class="btn btn-xs btn-default" value="true">ON</button>
-								<button class="btn btn-xs btn-info active" value="false">OFF</button>
-							</div>
+							
 						</div>
 					</div>
    			</div><!--panel-heading -->
@@ -297,12 +288,7 @@
 <!--------------------------------------------------------------------->
 <div id="accountinfo"></div><div id="accountlines"></div>
 <div id="accountoffers"></div><div id="accounttxs"></div>
-<!--------------------------------------------------------------->
-		<script src="../js/angular.js"></script>
-		<script src="../js/angular-route.js"></script>
-	 
-		<script src="js/app.js"></script>
-		<script src="js/controllers.js"></script>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -314,6 +300,11 @@
     <script src="../js/ripple-remote.js"></script>
 		<script src="../js/rippleok-util.js"></script>
 		<script src="./js/accountinfo.js"></script>
+<!--------------------------------------------------------------->
+		<script src="../js/angular.min.js"></script>
+	 
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
 
 </body></html>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-cn" ng-app="indexApp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
 	
     <!-- Custom styles for this template -->
     <link href="./css/rippleok.css" rel="stylesheet">
-
+		<script src="./js/ripple-gateways.js"></script>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="./js/ie-emulation-modes-warning.js"></script>
@@ -58,7 +58,7 @@
 		</div><!-- /container -->
 	</nav><!--/nav -->
   <div class="jumbotron" style="background-color:white">
-		<div class="container">
+		<div class="container" ng-controller="IndexCtrl" ng-cloak>
 			<br><br><br><br><br><br><br><br><br>
 			
 			<div class="row">
@@ -76,63 +76,27 @@
 				<div class="col-md-3"></div>
 	    </div>
 			<br><br><br>
-			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-9">
-					<h3><b>How much does an XRP cost?</b></h3>
+			
+							<div class=trade-title">
+								<div class="GATEWAY">Gateway</div>
+								<div class="PRICE">price</div>
+							</div>
+			
+			<div class="row" ng-repeat="market in markets">
+				<div class="col-md-2"><span class="currency {{market.currency}}"></span>{{market.name}}<br>Exchg rate:{{ExchgRate[market.currency]|number:2}}
 				</div>
-			</div>
- 			<div class="row">
-				<div class="col-md-3">United States Dollar<span class="currency USD"></span></div>
-				<div class="col-md-3"><span id="usdsnapswap" data-toggle="popover" data-placement="bottom" data-content=""></span>$ <a href="./gateway/gateway.html#USD.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">SnapSwap</a> <a href="https://snapswap.us/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="usdbitstamp" data-toggle="popover" data-placement="bottom" data-content=""></span>$ <a href="./gateway/gateway.html#USD.rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"  target="_blank">Bitstamp</a> <a href="http://www.bitstamp.net/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"></div>
-		  </div>
-		  <div class="row">
-				<div class="col-md-3">China Yuan <span class="currency CNY"></span></div>
-					<div class="col-md-3"><span id="cnyripplechina" data-toggle="popover" data-placement="bottom" data-content=""></span>¥ <a href="./gateway/gateway.html#CNY.razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"  target="_blank">rippleChina</a> <a href="https://trade.ripplechina.net/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-					<div class="col-md-3"><span id="cnyripplecn" data-toggle="popover" data-placement="bottom" data-content=""></span>¥ <a href="./gateway/gateway.html#CNY.rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"  target="_blank">rippleCn</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-					<div class="col-md-3"><span id="cnyripplefox" data-toggle="popover" data-placement="left" data-content=""></span>¥ <a href="./gateway/gateway.html#CNY.rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"  target="_blank">rippleFox</a> <a href="https://ripplefox.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-		  </div>
-		 
-			<div class="row">
-				<div class="col-md-3">Euro Member Countries<span class="currency EUR"></span></div>
-				<div class="col-md-3"><span id="eursnapswap" data-toggle="popover" data-placement="bottom" data-content=""></span>€ <a href="./gateway/gateway.html#EUR.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">SnapSwap</a> <a href="https://snapswap.eu/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="eurtherock" data-toggle="popover" data-placement="bottom" data-content=""></span>€ <a href="./gateway/gateway.html#EUR.rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"  target="_blank">therock</a> <a href="https://www.therocktrading.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"></div>
-		  </div>
-			<div class="row">
-				<div class="col-md-3">Japan Yen<span class="currency JPY"></span></div>
-				<div class="col-md-3"><span id="jpyrippletradejapan" data-toggle="popover" data-placement="top" data-content=""></span>¥ <a href="./gateway/gateway.html#JPY.rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"  target="_blank">RippleTradeJapan</a> <a href="http://rippletrade.jp/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="jpytokyojpy" data-toggle="popover" data-placement="top" data-content=""></span>¥ <a href="./gateway/gateway.html#JPY.r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"  target="_blank">tokyojpy</a> <a href="http://tokyojpy.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="RippleExchangeTokyo" data-toggle="popover" data-placement="top" data-content=""></span>¥ <a href="./gateway/gateway.html#JPY.r9ZFPSb1TFdnJwbTMYHvVwFK1bQPUCVNfJ"  target="_blank">tokyojpy</a> <a href="https://ripple-exchange.tokyo/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-		  </div>
-			<div class="row">
-				<div class="col-md-3">Canada Dollar<span class="currency CAD"></span></div>
-				<div class="col-md-3"><span id="cadrippleunion" data-toggle="popover" data-placement="top" data-content=""></span>$ <a href="./gateway/gateway.html#CAD.r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S"  target="_blank">RippleUnion</a> <a href="https://rippleunion.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"></div><div class="col-md-3"></div>
-		  </div>
-			<div class="row">
-				<div class="col-md-3">Bitcoin<span class="currency BTC"></span></div>
-				<div class="col-md-3"><span id="btcbitstamp" data-toggle="popover" data-placement="top" data-content=""></span>Ƀ <a href="./gateway/gateway.html#BTC.rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"  target="_blank">Bitstamp</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"><span id="btcbtc2ripple" data-toggle="popover" data-placement="top" data-content=""></span>Ƀ <a href="./gateway/gateway.html#BTC.rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"  target="_blank">btc2ripple</a> <a href="http://www.ripplecn.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"></div>
-		  </div>
-			<div class="row">
-				<div class="col-md-3">Singapore Dollar<span class="currency SGD"></span></div>
-				<div class="col-md-3"><span id="sgdripplesingapore" data-toggle="popover" data-placement="bottom" data-content=""></span>$ <a href="./gateway/gateway.html#SGD.r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"  target="_blank">RippleSingapore</a> <a href="https://www.ripplesingapore.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"></div><div class="col-md-3"></div>
-		  </div>
-			<div class="row">
-				<div class="col-md-3">Korea won<span class="currency KRW"></span></div>
-				<div class="col-md-3"><span id="krwripplekorea" data-toggle="popover" data-placement="bottom" data-content=""></span>₩ <a href="./gateway/gateway.html#KRW.rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"  target="_blank">PaxMoneta</a> <a href="https://www.paxmoneta.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"></div><div class="col-md-3"></div>
-		  </div>
-			<!--div class="row">
-				<div class="col-md-3">Gold Bullion International<span class="currency GBI"></span></div>
-				<div class="col-md-3"><span id="gbigbi" data-toggle="popover" data-placement="top" data-content=""></span> GBI <a href="http://www.bullioninternational.com/" target="_blank"><span class="glyphicon glyphicon-globe"></span></a></div>
-				<div class="col-md-3"></div><div class="col-md-3"></div>
-		  </div-->
+				<div class="col-md-10">
+					<div class="row" ng-repeat="gateway in market.gateways">
+						<div class="col-md-12">
+							<a href="./gateway/gateway.html#{{market.currency}}.{{gateway.address}}"  target="_blank">{{gateway.name}}</a>
+							<span id="{{market.currency}}{{gateway.address}}" data-toggle="popover" data-placement="right" data-content="" class="{{gateway.price.action}}">{{gateway.price.value}}</span>{{market.symbol}}
+							{{gateway.volume.xrp|number:0}}XRP{{gateway.volume.iou|number:2}}{{market.currency}}
+							<a href="{{gateway.url}}" target="_blank">{{gateway.url}}</a>
+						</div>
+					</div>
+				</div>
+			</div> 
+		
       <br><br>
       <hr>
       <footer class="row">
@@ -158,6 +122,11 @@
 		<script src="./js/rippleok-util.js"></script>
 		<script src="./js/ripple-price.js"></script>
 		<script src="./js/index.js"></script>
+<!--------------------------------------------------------------->
+		<script src="./js/angular.min.js"></script>
+	 
+		<script src="./js/app.js"></script>
+		<script src="./js/controllers.js"></script>
 
 </body></html>
 

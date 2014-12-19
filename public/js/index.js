@@ -1,4 +1,5 @@
 $(document ).ready(function () { // this has to be done after the document has been rendered
+	setTimeout(function(){
     $("[data-toggle='tooltip']").tooltip({html: true}); // enable bootstrap 3 tooltips
     $('[data-toggle="popover"]').popover({
         trigger: 'hover',
@@ -6,7 +7,7 @@ $(document ).ready(function () { // this has to be done after the document has b
 				container: "body"
     });
 		$('[data-toggle="popover"]').css("cursor","pointer");
-
+	},10000);
 });
 function checkAddress(){
 	var address=$("#address")[0].value.trim();

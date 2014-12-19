@@ -1,78 +1,97 @@
 remote.connect(function() {
 	subscribe();
 });
+//http://api.k780.com:88/?app=finance.rate&scur=USD&tcur=CNY&appkey=12416&sign=79a36d1d8c108269e7e354cc5e8a89fe&format=json
+//{"success":"1","result":{"status":"ALREADY","scur":"USD","tcur":"CNY","ratenm":"美元/人民币","rate":"6.2262","update":"2014-12-19 13:01:20"}}
+var ExchgRate={//对美元汇率
+	USD:1,
+	CNY:6.2262,
+	JPY:119.224998,
+	EUR:0.8145,
+	CAD:1.1574,
+	KRW:1101.900024,
+	SGD:1.3163
+}
 var Markets = 
 [
      {
         name: 'US Dollars',
         currency: 'USD',
+				symbol:'$',
         gateways: 
         [
-           {name: 'bitstamp', address: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',priceid:'#usdbitstamp'},
-           {name: 'snapswap', address: 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q',priceid:'#usdsnapswap'}
+           {name: 'bitstamp', address: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''},
+           {name: 'snapswap', address: 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]
      },
 
      {
-        name: 'Chinese Yuan',
+        name: 'ChineseYuan',
         currency: 'CNY',
+				symbol:'¥',
         gateways: 
         [
-           {name: 'ripplecn', address: 'rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK',priceid:'#cnyripplecn'},
-           {name: 'ripplechina', address: 'razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA',priceid:'#cnyripplechina'},
-					 {name: 'ripplefox', address: 'rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y',priceid:'#cnyripplefox'}
+           {name: 'ripplechina', address: 'razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''},
+           {name: 'ripplecn', address: 'rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''},
+					 {name: 'ripplefox', address: 'rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]        
      },
 		 {
-        name: 'Euro Member Countries',
+        name: 'Euro',
         currency: 'EUR',
+				symbol:'€',
         gateways: 
         [
-           {name: 'SnapSwap', address: 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q',priceid:'#eursnapswap'},
-           {name: 'therock', address: 'rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun',priceid:'#eurtherock'}
+           {name: 'SnapSwap', address: 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''},
+           {name: 'therock', address: 'rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]        
      },
 		 {
-        name: 'Singapore Dollar',
+        name: 'SingaporeDollar',
         currency: 'SGD',
+				symbol:'$',
         gateways: 
         [
-           {name: 'RippleSingapore', address: 'r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH',priceid:'#sgdripplesingapore'}
+           {name: 'RippleSingapore', address: 'r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]                
      },
 		 {
-        name: 'Japan Yen',
+        name: 'JapanYen',
         currency: 'JPY',
+				symbol:'¥',
         gateways: 
         [
-           {name: 'RippleTradeJapan', address: 'rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6',priceid:'#jpyrippletradejapan'},
-					 {name: 'tokyojpy', address: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN',priceid:'#jpytokyojpy'}
-					 {name: 'RippleExchangeTokyo', address: 'r9ZFPSb1TFdnJwbTMYHvVwFK1bQPUCVNfJ',priceid:'#RippleExchangeTokyo'}
+           {name: 'RippleTradeJapan', address: 'rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''},
+					 {name: 'tokyojpy', address: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''},
+					 {name: 'RippleExchangeTokyo', address: 'r9ZFPSb1TFdnJwbTMYHvVwFK1bQPUCVNfJ',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]                
      },
 		 {
-        name: 'Canada Dollar',
+        name: 'CanadaDollar',
         currency: 'CAD',
+				symbol:'$',
         gateways: 
         [
-           {name: 'RippleUnion', address: 'r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S',priceid:'#cadrippleunion'}
+           {name: 'RippleUnion', address: 'r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]                
      },
      {
         name: 'Bitcoin',
         currency: 'BTC',
+				symbol:'Ƀ',
         gateways: 
         [
-           {name: 'bitstamp', address: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',priceid:'#btcbitstamp'},
-					 {name: 'btc2ripple', address: 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q',priceid:'#btcbtc2ripple'}
+           {name: 'bitstamp', address: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''},
+					 {name: 'btc2ripple', address: 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]                
      },
 		 {
-        name: 'Korea won',
+        name: 'KoreaWon',
         currency: 'KRW',
+				symbol:'₩',
         gateways: 
         [
-           {name: 'PaxMonetar', address: 'rUkMKjQitpgAM5WTGk79xpjT38DEJY283d',priceid:'#paxMoneta'}
+           {name: 'PaxMonetar', address: 'rUkMKjQitpgAM5WTGk79xpjT38DEJY283d',price:{value:0,action:'asks'},volume:{xrp:0,iou:0},url:''}
         ]                
      }
 /*
@@ -92,10 +111,11 @@ function subscribe(){
    Markets.forEach(function(Market)
    {
       console.log("init Market"+Market.name);
-      var Gateways = Market.gateways;
-      Gateways.forEach(function(gateway)
+      var gateways = Market.gateways;
+      gateways.forEach(function(gateway)
       {
-           console.log("init gateway:"+gateway.name);
+           console.log("init gateway:"+Gateways[gateway.address].name);
+					 gateway.url=Gateways[gateway.address].weburl;
            ['asks','bids'].forEach(function(action)
            {
               if(action == "asks")
@@ -111,6 +131,7 @@ function subscribe(){
            });
       });
    });
+	g$scope.$apply();
 }
 function resubscribe(){
 	console.log("timeout fresh-------------------------------------------------------");
@@ -130,34 +151,52 @@ function tradeListener(action, tradeGets, tradePays, currency, gateway)
    var xrpamount;
    var coinamount;
    var pricecolor; 
+	 var volumexrp,volumeiou;
    // Ripple-lib bug
    if (tradeGets.is_valid() ||  tradePays.is_valid()) 
    {
      if(action == "asks")
       {
-         price = tradeGets.ratio_human(tradePays).to_human();
+				 if(currency=="BTC"){
+	        	price = tradePays.ratio_human(tradeGets).to_human();
+				 }else{	
+         	  price = tradeGets.ratio_human(tradePays).to_human();
+				 }
          xrpamount = tradePays.to_human();
          coinamount = tradeGets.to_human();
+				 volumexrp = tradePays.to_number();
+				 volumeiou = tradeGets.to_number();
 				 pricecolor="green";
       }
       else
       {
-         price = tradePays.ratio_human(tradeGets).to_human();
+				 if(currency=="BTC"){
+	        	price = tradeGets.ratio_human(tradePays).to_human();
+				 }else{	
+         	  price = tradePays.ratio_human(tradeGets).to_human();
+				 }
          xrpamount = tradeGets.to_human();
          coinamount = tradePays.to_human();
+				 volumexrp = tradeGets.to_number();
+				 volumeiou = tradePays.to_number();
 				 pricecolor="red";
       }
-      price=price.substring(0,12);
-			console.log(gateway.priceid+price);
+      price=price.substring(0,6);
+			console.log(gateway.address+price);
 			var pos;
 			for(pos=price.length-1;pos>=0;pos--){ 
 			 if(price.charAt(pos)!='0') break; 
 			}
 			price=price.substring(0,pos+1);//截取价格后面的0
 			if(price.length<=0) return;//有时候数值价格小到0
-  		$(gateway.priceid).html(price);
-			$(gateway.priceid).css("color",pricecolor);
-			console.log(gateway.priceid+price);
+			gateway.price.value=price;
+			gateway.price.action=action;
+			gateway.volume.xrp+=droptoxrp(volumexrp);
+			gateway.volume.iou+=volumeiou;
+			g$scope.$apply();
+  		//$(gateway.priceid).html(price);
+			//$(gateway.priceid).css("color",pricecolor);
+			//console.log(gateway.priceid+price);
 			var trade={};
 			trade.price=price;
 			trade.time=stringDate(new Date());
@@ -169,32 +208,19 @@ function tradeListener(action, tradeGets, tradePays, currency, gateway)
 				if(localStorage.tradedata){
 					tradedata=JSON.parse(localStorage.tradedata);
 				}
-				tradedata[gateway.priceid]=trade;
+				tradedata[gateway.address]=trade;
 				localStorage.tradedata=JSON.stringify(tradedata);
 			}
-			var content=$(gateway.priceid).attr("data-content");
+			var content=$("#"+currencygateway.address).attr("data-content");
 			if(content.length>1500)
 			{
 					content=content.substring(0,1200);
 					content=content.substring(0,content.lastIndexOf('<br>'));
 			}
-			$(gateway.priceid).attr("data-content",trade.time+" price:<font color='"+pricecolor+"'>"+trade.price+"</font> size:"+trade.size+"<br>"+content);	
+			$("#"+currency+gateway.address).attr("data-content",trade.time+" price:<font color='"+pricecolor+"'>"+trade.price+"</font> size:"+trade.size+"<br>"+content);	
+			
   }
 }
-function initprice(){
-	if(window.localStorage){
-		var tradedata={};
-		if(localStorage.tradedata){
-			tradedata=JSON.parse(localStorage.tradedata);
-			for(var priceid in tradedata){
-				var trade=tradedata[priceid];
-				$(priceid).html(trade.price);
-				$(priceid).css("color","gray");
-				$(priceid).attr("data-content",trade.time+" price:"+trade.price+" size:"+trade.size+"<br>"+$(priceid).attr("data-content"));	
-			}
-		}
-	}
-}
-initprice();
+
 
 
