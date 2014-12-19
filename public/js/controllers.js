@@ -9,18 +9,21 @@ app.controller('IndexCtrl',function($scope) {
 });
 
 function initprice(){
+	var tradedata={};
 	if(window.localStorage){
-		var tradedata={};
 		if(localStorage.tradedata){
 			tradedata=JSON.parse(localStorage.tradedata);
-			for(var i=0;i<Markets.length;i++){
-				for(var j=0;j<Markets[i].gateways.length;j++){
-					var trade=tradedata[Markets[i].gateways[j].address];
-					Markets[i].gateways[j].price.action='gray';
-					Markets[i].gateways[j].price.value=trade?trade.price:0;
-				}
-			}
 		}
 	}
+	for(var i=0;i<Markets.length;i++){
+		for(var j=0;j<Markets[i].gateways.length;j++){
+			var gateway=Markets[i].gateways[j];
+			var trade=tradedata[Markets[i].currency+gateway.address];
+			gateway.price.action='gray';
+			gateway.price.value=trade?trade.price:0;
+			gateway.url=Gateways[gateway.address].weburl;
+		}
+	}
+
 }
 
