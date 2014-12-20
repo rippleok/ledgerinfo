@@ -26,7 +26,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
    <style>
-	[ng\:cloak], [ng-cloak], .ng-cloak{display:none;}
 	.gridhead{
 	  font-size:12px;
 	  font-weight:bold; 
@@ -81,14 +80,10 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="row">
-					<div class="col-md-4">Ripple Name：<span id="ripplename"></span></div>
-					<div class="col-md-8">Address：<span id="rippleaddress"><span></div>
+					<div class="col-md-12"><b>{{lang==0?'Ripple Name':'瑞波名'}}：</b><span id="ripplename"></span> <b>{{lang==0?'Address':'地址'}}：</b><span id="rippleaddress"><span></div>
 				</div>
 				<div class="row">
-					<div class="col-md-12" id="otherinfo"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-12"><span id="xrp"></span></div>
+					<div class="col-md-12"><span id="xrp"></span> <span id="otherinfo"></span></div>
 				</div>
 			</div>	
 			<div class="col-md-4"><span id="avatar"></span><span id="domain"></span></div>
@@ -105,10 +100,10 @@
 	   				<div class="panel-heading">
 		  				<div class="row">
 								<div class="col-md-3">
-									<h3 class="panel-title" style="margin-top:3px">Funds list</h3>
+									<h3 class="panel-title" style="margin-top:3px">{{lang==0?'Funds list':'资金列表'}}</h3>
 								</div>
 								<div class="col-md-9">
-									<a id="requery" href="#" onclick="queryAccountInfo();" class="hide">Download fund list timeout，click this retry.</a>
+									<a id="requery" href="#" onclick="queryAccountInfo();" class="hide">{{lang==0?'Download fund list timeout，click this retry':'下载资金列表数据超时，点击这儿重试'}}.</a>
 								</div>
 							</div>
 	   				</div>
@@ -126,7 +121,7 @@
 									<div class="row" ng-repeat="fund in funds" ng-class="{'even':$even,'odd':$odd}">
 										<div class="col-md-1 gap" style="text-align:center">{{fund.currency}}</div>
 										<div class="col-md-3 gap" style="text-align:right">{{fund.amount}}</div>
-										<div class="col-md-5 gap" style="text-align:left">{{fund.issuer}}{{fund.issuer|toname|bracket}}</div>
+										<div class="col-md-5 gap" style="text-align:left"><a href='../account/account.html#{{fund.issuer}}' target="_blank">{{fund.issuer}}{{fund.issuer|toname|bracket}}</a></div>
 										<div class="col-md-2 gap" style="text-align:right">{{fund.limit}}</div>
 										<div class="col-md-1" style="text-align:center">{{fund.no_ripple|checkmark}}</div>
 									</div>
@@ -157,7 +152,7 @@
  				<div class="panel-heading">
   				<div class="row">
 						<div class="col-md-6">
-							<h3 class="panel-title" style="margin-top:3px">Offsers list</h3>
+							<h3 class="panel-title" style="margin-top:3px">{{lang==0?'Offsers list':'挂单列表'}}</h3>
 						</div>							
 						<div class="col-md-6" style="text-align:right">
 							
@@ -168,15 +163,15 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row gridhead" ng-show="offers.length>0">
-								<div class="col-md-5 gap" style="text-align:right">Base currency</div>
-								<div class="col-md-5 gap">Counter currency</div>
-								<div class="col-md-2">Price</div>
+								<div class="col-md-5 gap" style="text-align:right">{{lang==0?'Base currency':'基础货币'}}</div>
+								<div class="col-md-5 gap">{{lang==0?'Counter currency':'计数货币'}}</div>
+								<div class="col-md-2">{{lang==0?'Price':'价格'}}</div>
 							</div>
 							<div class="row"  ng-repeat="offer in offers" ng-class="{'even':$even,'odd':$odd}">
 								<div class="col-md-5 gap" style="text-align:right"><span style="color:{{offer.color}}"><b>{{offer.prompt1}}</b></span>
-									{{offer.goods}} <span title='{{offer.goodsissuer}}'>{{offer.goodsissuer|shortAccount|bracket}}</span></div>
+									{{offer.goods}} <span title='{{offer.goodsissuer}}'><a href='../account/account.html#{{offer.goodsissuer}}' target="_blank">{{offer.goodsissuer|shortAccount|bracket}}</span></a></div>
 								<div class="col-md-5 gap"><span style="color:{{offer.color}}"><b>{{offer.prompt2}}</b></span>
-									{{offer.money}} <span title='{{offer.moneyissuer}}'>{{offer.moneyissuer|shortAccount|bracket}}</span></div>
+									{{offer.money}} <span title='{{offer.moneyissuer}}'><a href='../account/account.html#{{offer.moneyissuer}}' target="_blank">{{offer.moneyissuer|shortAccount|bracket}}</a></span></div>
 								<div class="col-md-2">{{offer.price}}</div>
 							</div>
 								
@@ -194,7 +189,7 @@
  				<div class="panel-heading">
   				<div class="row">
 						<div class="col-md-6">
-							<h3 class="panel-title" style="margin-top:3px">Transactions History</h3>
+							<h3 class="panel-title" style="margin-top:3px">{{lang==0?'Transactions History':'交易历史'}}</h3>
 						</div>							
 						<div class="col-md-6" style="text-align:right">
 							
@@ -209,7 +204,7 @@
 								<div class="col-md-12">
 										<span class="date" style="color:grey">{{tx.date}}</span>
 										<span class="txtype">{{tx.TransactionType}}</span> Seq:<b>{{tx.Sequence}}</b>
-										<span><b>Trust Amount</b> {{tx.LimitAmount.value}}{{tx.LimitAmount.currency}} {{tx.LimitAmount.issuer}}{{tx.LimitAmount.issuer|toname|bracket}}</span>
+										<span><b>Trust Amount</b> {{tx.LimitAmount.value}}{{tx.LimitAmount.currency}} <a href='../account/account.html#{{tx.LimitAmount.issuer}}' target="_blank">{{tx.LimitAmount.issuer}}{{tx.LimitAmount.issuer|toname|bracket}}</a></span>
 										<span><b>Fee:</b> {{tx.Fee}}drop</span>
 										<span>TX hash:{{tx.txhash|shortTX}}</span>
 								</div>
@@ -231,7 +226,7 @@
 								<div class="col-md-12">
 										<span class="date" style="color:grey">{{tx.date}}</span>
 										<span class="txtype">{{tx.TransactionType}}</span> Seq:<b>{{tx.Sequence}}</b>
-										<span><b>{{tx.type}}</b> {{tx.amount.value}}{{tx.amount.currency}}{{tx.amount.issuer|shortAccount|bracket}} </span>
+										<span><b>{{tx.type}}</b> {{tx.amount.value}}{{tx.amount.currency}}<a href='../account/account.html#{{tx.amount.issuer}}' target="_blank">{{tx.amount.issuer|shortAccount|bracket}}</a> </span>
 										<span><b>{{tx.prep}}</b> {{tx.counterparty}}{{tx.counterparty|toname|bracket}}</span>
 										<span>TX hash:{{tx.txhash|shortTX}}</span>
 								</div>
@@ -243,9 +238,9 @@
 									<span class="date" style="color:grey">{{tx.date}}</span>
 									<span class="txtype">{{tx.TransactionType}}</span> Seq:<b>{{tx.Sequence}}</b>
 									<span style="color:{{tx.color}}"><b> {{tx.prompt1}}</b></span>
-									{{tx.goods}}<span title='{{tx.goodsissuer}}'>{{tx.goodsissuer|shortAccount|bracket}}</span>
+									{{tx.goods}}<span title='{{tx.goodsissuer}}'><a href='../account/account.html#{{tx.goodsissuer}}' target="_blank">{{tx.goodsissuer|shortAccount|bracket}}</a></span>
 									<span style="color:{{tx.color}}"><b>  {{tx.prompt2}}</b></span>
-									{{tx.money}}<span title='{{tx.moneyissuer}}'>{{tx.moneyissuer|shortAccount|bracket}}</span> <b>Price:</b>{{tx.price}} 
+									{{tx.money}}<span title='{{tx.moneyissuer}}'><a href='../account/account.html#{{tx.moneyissuer}}' target="_blank">{{tx.moneyissuer|shortAccount|bracket}}</a></span> <b>Price:</b>{{tx.price}} 
 									<b>TX hash:</b><span title='{{tx.txhash}}'>{{tx.txhash|shortTX}}</span>							
 								</div>
 								<div class="col-md-1" style="text-align:right;cursor:pointer" ng-click="showfills('#fill'+tx.Sequence);" ng-show="tx.fills.length>0">
@@ -296,7 +291,7 @@
     <script src="../js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
-    <script src="../js/ripple-0.9.3.js"></script>
+    <script src="../js/ripple-min.js"></script>
     <script src="../js/ripple-remote.js"></script>
 		<script src="../js/rippleok-util.js"></script>
 

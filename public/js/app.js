@@ -5,6 +5,7 @@ var app=angular.module('indexApp', []);
 app.filter('exchgrate', function() {
 	return function(input,tocur,cur) {
 		if(cur==tocur) return input;
+		if(cur=='BTC') return 1/input;
 		if(tocur=='USD'){
   		if(ExchgRate[cur]) return input/ExchgRate[cur];
 		}else{

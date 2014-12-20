@@ -4,6 +4,7 @@ var g$scope;
 var app=angular.module('accountApp', []);
 app.controller('AccountCtrl',function($scope) {
 	g$scope=$scope;
+	$scope.lang=getLang();
 	$scope.funds=[];//持有资金
 	$scope.issuers=[];//发行资金，一般是网关
 	$scope.accountsetting=[];//账号的设置信息

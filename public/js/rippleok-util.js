@@ -90,3 +90,12 @@ function getIssuer(meta,amount){
 			if(high.issuer === account) return low.issuer;
 			else if(low.issuer === account) return high.issuer;}}
 	return amount.issuer;}
+function getLang(){
+	if(window.localStorage) {
+		if(localStorage["language"]) return localStorage["language"];
+	}
+	return 0;
+}
+function saveLang(l){
+	if(window.localStorage) localStorage["language"]=l;
+}

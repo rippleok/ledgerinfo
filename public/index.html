@@ -28,7 +28,7 @@
 		.popover { max-width: 600px; width: auto;}
 	</style> 
 </head>
-<body>
+<body ng-controller="IndexCtrl">
 	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -42,23 +42,19 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-          <li><a href="./account/account.html" target="_blank">Account</a></li>
-          <li><a href="./gateway/gateway.html#CNY.razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA" target="_blank">Gateway</a></li>
+          <li><a href="./account/account.html" target="_blank">{{lang==0?'Account':'账号信息'}}</a></li>
+          <li><a href="./gateway/gateway.html#CNY.razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA" target="_blank">{{lang==0?'Gateway':'网关信息'}}</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-        	<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Language <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">English</a></li>
-                <li><a href="#">中文(施工中)</a></li>
-              </ul>
-            </li>
+          <ul class="nav navbar-nav">
+           <li><a href="" ng-click="setlang(0)">English</a></li>
+           <li><a href="" ng-click="setlang(1)">中文</a></li>
         </ul>
       </div>
 		</div><!-- /container -->
 	</nav><!--/nav -->
   <div class="jumbotron" style="background-color:white">
-		<div class="container" ng-controller="IndexCtrl" ng-cloak>
+		<div class="container" ng-cloak>
 			<br><br>
 			
 			<div class="row">
@@ -79,15 +75,16 @@
 					<table class="table table-bordered table-condensed table-hover">
 								<thead align="center">
 									<tr>
-										<th style="width:150px;text-align:center">Currency</th>
-										<th style="width:120px;text-align:center">Gateway</th>
-										<th style="width:100px;text-align:center">Trade Price</th>
-										<th style="width:100px;text-align:center">To CNY</th>
-										<th style="width:100px;text-align:center">To USD</th>
-										<th style="width:100px;text-align:center">Volume(XRP)</th>
-										<th style="width:100px;text-align:center">Volume(IOU)</th>
-										<th style="text-align:center">Web</th>
-										<th style="width:100px;text-align:center">ExchgRate/USD</th>
+										<th style="width:150px;text-align:center">{{lang==0?'Currency':'币种'}}</th>
+										<th style="width:120px;text-align:center">{{lang==0?'Gateway':'网关'}}</th>
+										<th style="width:100px;text-align:center">{{lang==0?'Trade Price':'价格'}}</th>
+										<th style="width:100px;text-align:center" ng-if="lang==1">{{lang==0?'To CNY':'人民币'}}</th>
+										<th style="width:100px;text-align:center" ng-if="lang==0">{{lang==0?'To USD':'美元'}}</th>
+										<th style="width:100px;text-align:center">{{lang==0?'Volume(XRP)':'交易量(XRP)'}}</th>
+										<th style="width:100px;text-align:center">{{lang==0?'Low':'最低价'}}</th>
+										<th style="width:100px;text-align:center">{{lang==0?'High':'最高价'}}</th>
+										<th style="text-align:center">{{lang==0?'Web':'官网'}}</th>
+										<th style="width:100px;text-align:center">{{lang==0?'ExchgRate/USD':'汇率/USD'}}</th>
 									</tr>
 								</thead>
 								<tbody  ng-repeat="market in markets">
@@ -95,10 +92,11 @@
 										<td style="vertical-align:middle" ng-if="$first" rowspan="{{market.gateways.length}}"><span class="currency {{market.currency}}"></span>{{market.name}}</td>
 										<td><a href="./gateway/gateway.html#{{market.currency}}.{{gateway.address}}"  target="_blank">{{gateway.name}}</a></td>
 										<td style="text-align:right"><span id="{{market.currency}}{{gateway.address}}" data-toggle="popover" data-placement="right" data-content="" class="{{gateway.price.action}}">{{gateway.price.value}}</span>{{market.symbol}}</td>
-										<td style="text-align:right;color:gray">{{gateway.price.value|exchgrate:'CNY':market.currency|number:7}}</td>
-										<td style="text-align:right;color:gray">{{gateway.price.value|exchgrate:'USD':market.currency|number:7}}</td>
+										<td style="text-align:right;color:gray" ng-if="lang==1">{{gateway.price.value|exchgrate:'CNY':market.currency|number:7}}</td>
+										<td style="text-align:right;color:gray" ng-if="lang==0">{{gateway.price.value|exchgrate:'USD':market.currency|number:7}}</td>
 										<td style="text-align:right">{{gateway.volume.xrp|number:0}}</td>
-										<td style="text-align:right">{{gateway.volume.iou|number:2}}{{market.symbol}}</td>
+										<td style="text-align:right">{{gateway.price.low}}</span>{{market.symbol}}</td>
+										<td style="text-align:right">{{gateway.price.high}}</span>{{market.symbol}}</td>
 										<td><a href="{{gateway.url}}" target="_blank">{{gateway.url}}</a></td>
 										<td style="text-align:right;vertical-align:middle" ng-if="$first" rowspan="{{market.gateways.length}}">{{ExchgRate[market.currency]|number:2}}{{market.currency}}</td>
 									</tr>
@@ -107,7 +105,7 @@
 
       <hr>
       <footer class="row">
-        <div class="col-md-10">Version 1.1.0 <a href="https://github.com/rippleok" target="_blank">https://github.com/rippleok</a> Author: <a href="mailto:lieefu@gmail.com">lieefu@gmail.com</a>. ~rippleok rXzxK7wpKLZ99qwXNiy5nFQUhYxFZq3Rd</div>
+        <div class="col-md-10">Version 1.1.0 <a href="https://github.com/rippleok" target="_blank">https://github.com/rippleok</a> {{lang==0?'Author':'开发者'}}: <a href="mailto:lieefu@gmail.com">lieefu@gmail.com</a>. ~rippleok rXzxK7wpKLZ99qwXNiy5nFQUhYxFZq3Rd</div>
         <div class="col-md-2">
            <a href="https://twitter.com/lieefu" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
 					 <a href="http://jq.qq.com/?_wv=1027&k=c7uoOv" target="_blank"><i class="fa fa-qq fa-1x"></i></a>
@@ -125,7 +123,7 @@
     <script src="./js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="./js/ie10-viewport-bug-workaround.js"></script>
-    <script src="./js/ripple-0.9.3.js"></script>
+    <script src="./js/ripple-min.js"></script>
 		<script src="./js/ripple-remote.js"></script>
 		<script src="./js/rippleok-util.js"></script>
 		<script src="./js/ripple-price.js"></script>

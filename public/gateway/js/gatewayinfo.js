@@ -1,76 +1,53 @@
-var gateway0 = 
-     {
-		name: 'ripplecn',
-		address:'rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK',
-        //name: 'ripplechina',
-        //address: 'razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA', 
-		currency: 'CNY',
-		weburl: 'https://ripplecn.com/',
-		
-     };
-var gateway = 
-     {
-		name: '',
-    address: '', 
-		currency: '',
-		weburl: '',
-		
-     };
-var gateway1 = 
-     {
-		name: 'gbi',
-    address: 'rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67', 
-		currency: '0158415500000000C1F76FF6ECB0BAC600000000',
-		weburl: 'https://trade.ripplechina.net/',
-		
-     };
-var goods =
-	{
-		currency: 'XRP',
-		issuer: null,
-	}
-var money =
-	{
-		currency: '',
-		issuer: '',
-	}
+
+var gateway = {name: '',address: '',currency: '',weburl: '',};
+
+var goods =	{currency: '',issuer: ''};
+var money =	{currency: '',issuer: ''}
 remote.on('state',function(state){
 		console.log('remote state:');
 		console.log(JSON.stringify(state));
-	})
-var url;
-var moneyissuer;
-remote.connect(function(){
-	//remote.on('transaction_all', transactionListener);	
-	url = decodeURIComponent(document.URL);
+})
+init();
+function init(){
+	var url = decodeURIComponent(document.URL);
 	var separator="";
 	if (url.indexOf("#") >= 0) separator="#";
 	if (url.indexOf("?address=") >= 0) separator="?address=";
 	if(separator=="") return;
-	moneyissuer = url.split(separator)[1].trim();
-	if(moneyissuer.indexOf('.')>=0){
-		money.currency=moneyissuer.split('.')[0].trim().toUpperCase();
-		money.issuer=moneyissuer.split('.')[1].trim();
-		goods.currency="XRP";
-		goods.issuer=null;
-		if(Gateways[money.issuer]){
-			gateway.name=Gateways[money.issuer].name;
-			gateway.address=money.issuer;
-			gateway.weburl=Gateways[money.issuer].weburl;
+	var goodsmoneyissuer = url.split(separator)[1].trim();
+	url = url.split(separator)[0];
+	window.location.href = url + "#" + goodsmoneyissuer;
+	$("#address")[0].value=goodsmoneyissuer;
+	parseGoodsmoneyissuer(goodsmoneyissuer);
+}
+function parseGoodsmoneyissuer(goodsmoneyissuer){
+	goods.currency=money.currency="";
+	if(goodsmoneyissuer.indexOf('.')>=0){
+		var goodsmoney=goodsmoneyissuer.split('.')[0].trim().toUpperCase();
+		var issuer=goodsmoneyissuer.split('.')[1].trim();
+		if(goodsmoney.indexOf('/')>0){
+			goods.currency=goodsmoney.split('/')[0].trim();
+			money.currency=goodsmoney.split('/')[1].trim();
 		}else{
-			gateway.name=account2name(money.issuer);
-			gateway.address=money.issuer;
+			goods.currency='XRP';
+			money.currency=goodsmoney;
 		}
-		if(money.currency=="BTC"){
-			goods.currency="BTC";
-			goods.issuer=money.issuer;
-			money.currency="XRP";
-			money.issuer=null;
+		goods.issuer=(goods.currency=="XRP"?null:issuer);
+		money.issuer=(money.currency=="XRP"?null:issuer);
+		if(Gateways[issuer]){
+			gateway.name=Gateways[issuer].name;
+			gateway.address=issuer;
+			gateway.weburl=Gateways[issuer].weburl;
+		}else{
+			gateway.name=account2name(issuer);
+			gateway.address=issuer;
 		}
-		url = url.split(separator)[0];
-		window.location.href = url + "#" + moneyissuer;
-		loadoffers();
 	}
+
+}
+remote.connect(function(){
+	//remote.on('transaction_all', transactionListener);	
+		loadoffers();
 	//setTimeout(booksubscribe,5000);
 });
 var asksbook,bidsbook;
@@ -100,6 +77,7 @@ function bookresubscribe(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function loadoffers(callback){
 	//console.log("下载挂单数据...............");
+	if(money.currency=='') return;
 	$("#txLoading").show();
 	bookresubscribe();
 	var finish=0;

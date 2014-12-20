@@ -3,8 +3,13 @@ var g$scope;
 var app=angular.module('indexApp');
 app.controller('IndexCtrl',function($scope) {
 	g$scope=$scope;
+	$scope.lang=getLang();
 	$scope.markets=Markets;
 	$scope.ExchgRate=ExchgRate;
+	$scope.setlang=function(l){
+		$scope.lang=l;
+		saveLang(l);
+	}
 	initprice();
 });
 
@@ -24,6 +29,5 @@ function initprice(){
 			gateway.url=Gateways[gateway.address].weburl;
 		}
 	}
-
 }
 
